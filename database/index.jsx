@@ -7,21 +7,22 @@ db.once('open', function() {
   // we're connected!
   console.log('successfully connected to the database')
 });
+var fakeData = require('./fakedata.jsx');
+
 
 var reviewSchema = new mongoose.Schema({
   overallRating: Number,
-  propertyID: Number,
-  //messageThread is currently an object.  I'm unsure if I need to specifiy that it's an object inside an array, or if that will happen by default.
-  messageThread: {
+  // propertyID: Number,
+  messageThread: [{
     userName: String,
     userPostMonthYear: String,
     userMessage: String,
-    userPicture: png,
+    userPicture: String,
     hostName: String, //static
     hostResponseDate: String, //dynamic
     hostMessage: String, //dynamic
-    hostPicture: png //static
-  },
+    hostPicture: String //static
+  }],
   rating: {
     communication: Number,  //0-5 average
     checkIn: Number, //0-5 average
@@ -42,17 +43,36 @@ var reviewSchema = new mongoose.Schema({
 var ReviewModel = mongoose.model('Review', reviewSchema);
 
 
-let save = (data, callback) => {
-  // var repo = new RepoModel(data);
+let save = () => {
 
-  // console.log('data: ', data)
+  //deletes all documents currently in the collection
+  ReviewModel.remove({}, function(err) {
+    if (err) {
+        console.log(err)
+    } else {
+        console.log('success, the origional data has been deleted');
+    }
+  });
 
-  ReviewModel.insertMany(data, function(err, data) {
+  // populate() creates an array of unique data objects, following the conventions of the reviewSchema below.  We can then add this array of 100 objects to the database.
+  var arrayOfFakeData = [];
+  var populate = function (){
+    for (var i = 0; i < 100; i++) {
+      var tempData = fakeData();
+      arrayOfFakeData.push(tempData);
+    }
+  }
+  //calls the function above.
+  populate()
+
+  ReviewModel.insertMany(arrayOfFakeData, function(err, data) {
    if (err){
     console.log(err)
-   }
-    else {
-      callback(data)
+   } else {
+    console.log('success, your data has been logged to the db')
     }
   });
 }
+
+//calls the above function and populates the database with 100 new records.  This function call can be moved elsewhere in this repo.
+save();

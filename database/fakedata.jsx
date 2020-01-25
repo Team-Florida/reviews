@@ -1,9 +1,9 @@
 const faker = require('faker');
 
-//allows host to repond to guest's message 25% of the time with a random string.
+// doesHostRespond() allows host to repond to guest's message 25% of the time with a random string.  Otherwise the host response will be null.
 var doesHostRespond = function() {
   var odds = Math.random();
-  console.log(odds, 0.25)
+
   if (odds > 0.25) {
     return null;
   } else {
@@ -11,18 +11,19 @@ var doesHostRespond = function() {
   }
 }
 
-var NumberBetweenZeroAndFive = function () {
+var numberBetweenZeroAndFive = function () {
   var randomNum = Math.floor(Math.random() * Math.floor(6));
   return randomNum;
 }
 
-var NumberBetweenZeroAndOne = function () {
+var numberBetweenZeroAndOne = function () {
   var randomNum = Math.floor(Math.random() * Math.floor(2));
   return randomNum;
 }
 
-var fakeData = {
-  overallRating: NumberBetweenZeroAndFive(),
+var fakeData = function () {
+ return {
+  overallRating: numberBetweenZeroAndFive(),
   // propertyID: Number,
   messageThread: {
     userName: faker.name.findName(),
@@ -32,27 +33,26 @@ var fakeData = {
     hostName: 'Ahmed Valdez', //static
     hostResponseDate: 'January 2020',
     hostMessage: doesHostRespond(),
-    hostPicture: `https://s3.amazonaws.com/uifaces/faces/twitter/johnriordan/128.jpg`,
+    hostPicture: `https://s3.amazonaws.com/uifaces/faces/twitter/johnriordan/128.jpg`, //static
   },
   rating: {
-    communication: NumberBetweenZeroAndFive(),
-    checkIn: NumberBetweenZeroAndFive(),
-    accuracy: NumberBetweenZeroAndFive(),
-    location: NumberBetweenZeroAndFive(),
-    cleanliness: NumberBetweenZeroAndFive(),
-    value: NumberBetweenZeroAndFive()
+    communication: numberBetweenZeroAndFive(),
+    checkIn: numberBetweenZeroAndFive(),
+    accuracy: numberBetweenZeroAndFive(),
+    location: numberBetweenZeroAndFive(),
+    cleanliness: numberBetweenZeroAndFive(),
+    value: numberBetweenZeroAndFive()
   },
   amenaties: {
-    amazingAmenities: NumberBetweenZeroAndOne(),
-    quickResponses: NumberBetweenZeroAndOne(),
-    outstandingHositality: NumberBetweenZeroAndOne(),
-    sparklingClean: NumberBetweenZeroAndOne(),
-    stylishSpace: NumberBetweenZeroAndOne()
+    amazingAmenities: numberBetweenZeroAndOne(),
+    quickResponses: numberBetweenZeroAndOne(),
+    outstandingHositality: numberBetweenZeroAndOne(),
+    sparklingClean: numberBetweenZeroAndOne(),
+    stylishSpace: numberBetweenZeroAndOne()
   }
 }
+}
 
+// console.log(fakeData)
 
-
-
-
-console.log(fakeData)
+module.exports = fakeData;
