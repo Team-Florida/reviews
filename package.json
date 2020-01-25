@@ -8,8 +8,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "nodemon server/index.jsx",
-    "react-dev": "webpack -d --watch"
+    "start": "node server/index.jsx",
+    "react-dev": "webpack -d --watch",
+    "seed-dummy-data": "nodemon database/index.jsx"
   },
   "dependencies": {
     "angular": "^1.6.5",
