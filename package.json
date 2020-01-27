@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server/index.jsx",
     "react-dev": "webpack -d --watch",
-    "seed-dummy-data": "nodemon database/index.jsx"
+    "seed-dummy-data": "node database/index.jsx"
   },
   "dependencies": {
     "angular": "^1.6.5",
