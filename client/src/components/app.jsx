@@ -5,7 +5,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataFromDB: []
+            houseReviews: []
         }
     }
     getData() {
@@ -15,7 +15,7 @@ class App extends React.Component {
             // handle success
             // console.log(response)
             this.setState({
-                dataFromDB: response.data
+                houseReviews: response.data
             })
         })
         .catch((error) => {
@@ -32,7 +32,7 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Airbnb Reviews</h1>
-                <Reviews data={this.state.dataFromDB}/>
+                <Reviews data={this.state.houseReviews}/>
             </div>
         )
     }
