@@ -73,6 +73,20 @@ let save = () => {
     }
   });
 }
-
 //calls the above function and populates the database with 100 new records.  This function call can be moved elsewhere in this repo.
 save();
+
+let getAllReviews = (callback) => {
+  // return db.reviews.find();
+  var houseReviews = ReviewModel.find({}, function (err, docs) {
+    if (err){
+      callback(err)
+    } else {
+      callback(docs)
+    }
+
+  });
+
+}
+
+module.exports = getAllReviews

@@ -1,18 +1,41 @@
 import React from 'react';
-import Reviews from './reviews.jsx'
-// import Rate from ‘./Rate.jsx’
-// import ReactCarousel from ‘./ReactCarousel.jsx’
-// import SildeShow from ‘./SildeShow.jsx’
+import Reviews from './reviews.jsx';
+import axios from 'axios';
 class App extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+            houseReviews: []
+        }
     }
+    getData() {
+
+        axios.get('/reviews')
+        .then((response) => {
+            // handle success
+            // console.log(response)
+            this.setState({
+                houseReviews: response.data
+            })
+        })
+        .catch((error) => {
+            // handle error
+            console.log(error);
+        })
+    }
+
+    componentDidMount(){
+        this.getData()
+    }
+
     render() {
         return (
             <div>
-            <Reviews />
+                <h1>Airbnb Reviews</h1>
+                <Reviews data={this.state.houseReviews}/>
             </div>
         )
     }
 }
+
 export default App;
