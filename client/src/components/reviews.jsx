@@ -1,14 +1,18 @@
 import React from 'react';
 
-class Reviews extends React.Component {
-    render() {
-        return (
-            <div>
-            <h1>Reviews from past renters</h1>
-            <div>footer info</div>
-            </div>
-        )
-    }
-}
+const Reviews = (props) => (
+  <div>
+    {props.data.map((data, index) => (
+      <div className="phrase-row">
+      <div className="phrase-data">{data.messageThread[0].userName}</div>
+      <div className="phrase-data">{data.messageThread[0].userPostMonthYear}</div>
+      <div className="phrase-data">{data.messageThread[0].userMessage}</div>
+
+      {/* {console.log(data)} */}
+      </div>
+    ))}
+  </div>
+)
+
 export default Reviews;
 
