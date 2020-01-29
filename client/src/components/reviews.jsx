@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Message from './elements/Message.js';
-import Date from './elements/Date.js';
-import UserName from './elements/UserName.js';
+import Message from './elements/Message.jsx';
+import Date from './elements/Date.jsx';
+import UserName from './elements/UserName.jsx';
 
 
 
