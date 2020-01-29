@@ -4,7 +4,18 @@ import Message from './elements/Message.jsx';
 import Date from './elements/Date.jsx';
 import UserName from './elements/UserName.jsx';
 
-
+const Avatar = styled.h1`
+  background-color: #D8D8D8;
+  border-radius: 50%;
+  border-width: 2px;
+  border-color: #ffffff;
+  // border-style: solid;
+  vertical-align: middle;
+  overflow: hidden;
+  display: block;
+  height: 48px;
+  width: 48px;
+`;
 
 const Reviews = (props) => (
   //entire block displaying a person's Airbnb review
@@ -12,7 +23,9 @@ const Reviews = (props) => (
     {props.data.map((data) => (
       <div className="house-review">
         <div className="user-photo-name-date">
-          <img src={data.messageThread[0].userPicture}/>
+          <Avatar>
+            <img src={data.messageThread[0].userPicture}/>
+          </Avatar>
           <div>
             <UserName>
               <div className="user-name">{data.messageThread[0].userName}</div>
