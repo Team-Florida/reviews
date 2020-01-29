@@ -8,12 +8,12 @@ class App extends React.Component {
             houseReviews: []
         }
     }
+    
     getData() {
-
         axios.get('/reviews')
         .then((response) => {
             // handle success
-            // console.log(response)
+            console.log(response.data)
             this.setState({
                 houseReviews: response.data
             })

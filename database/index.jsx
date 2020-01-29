@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/reviews', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/reviews', { useNewUrlParser: true, useUnifiedTopology: true });
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -46,7 +46,7 @@ var ReviewModel = mongoose.model('Review', reviewSchema);
 let save = () => {
 
   //deletes all documents currently in the collection
-  ReviewModel.remove({}, function(err) {
+  ReviewModel.deleteMany({}, function(err) {
     if (err) {
         console.log(err)
     } else {
