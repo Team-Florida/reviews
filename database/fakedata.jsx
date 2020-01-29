@@ -1,4 +1,6 @@
 const faker = require('faker');
+// faker.setLocale("de");
+
 
 // doesHostRespond() allows host to repond to guest's message 25% of the time with a random string.  Otherwise the host response will be null.
 var doesHostRespond = function() {
