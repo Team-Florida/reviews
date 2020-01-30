@@ -3,19 +3,16 @@ import styled from 'styled-components';
 import Message from './elements/Message.jsx';
 import Date from './elements/Date.jsx';
 import UserName from './elements/UserName.jsx';
+import Avatar from './elements/Avatar.jsx';
 
-const Avatar = styled.h1`
-  background-color: #D8D8D8;
-  border-radius: 50%;
-  border-width: 2px;
-  border-color: #ffffff;
-  // border-style: solid;
-  vertical-align: middle;
-  overflow: hidden;
-  display: block;
-  height: 48px;
-  width: 48px;
-`;
+// const NameDate = styled.h1`
+//   // float: left;
+//   text-align: left;
+//   margin: 2px 10px;
+//   display: inline;
+// `;
+
+
 
 const Reviews = (props) => (
   //entire block displaying a person's Airbnb review

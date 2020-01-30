@@ -29,7 +29,7 @@ var fakeData = function () {
   // propertyID: Number,
   messageThread: {
     userName: faker.name.findName(),
-    userPostMonthYear: faker.date.month() + ' 2019',
+    userPostMonthYear: faker.date.past() + ' 2019',
     userMessage: faker.lorem.paragraph(),
     userPicture: faker.image.avatar(),
     hostName: 'Ahmed Valdez', //static
@@ -54,7 +54,5 @@ var fakeData = function () {
   }
 }
 }
-
-// console.log(fakeData)
 
 module.exports = fakeData;

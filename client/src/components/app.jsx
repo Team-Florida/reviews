@@ -2,6 +2,7 @@ import React from 'react';
 import Reviews from './reviews.jsx';
 import axios from 'axios';
 import styled from 'styled-components';
+import OverallReview from './OverallReview.jsx'
 
 const Title = styled.h1`
     margin: 0px;
@@ -20,7 +21,15 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            houseReviews: []
+            houseReviews: [],
+            viewableHouseReviews: []
+        }
+    }
+
+    sortData(data){
+        var sortedReviews = [];
+        for (var i = 0; i < data.length; i++) {
+            console.log(data[i])
         }
     }
 
@@ -28,10 +37,12 @@ class App extends React.Component {
         axios.get('/reviews')
         .then((response) => {
             // handle success
-            console.log(response.data)
+            // console.log(response.data)
             this.setState({
-                houseReviews: response.data
+                houseReviews: this.sortData(response.data),
+                viewableHouseReviews: [response.data[0], response.data[1], response.data[2], response.data[3], response.data[4], response.data[5], response.data[6]]
             })
+
         })
         .catch((error) => {
             // handle error
@@ -49,7 +60,10 @@ class App extends React.Component {
                 <Title>
                     Reviews
                 </Title>
-                <Reviews data={this.state.houseReviews}/>
+
+                {this.state.houseReviews === undefined ? <div /> : <OverallReview data={this.state.houseReviews}/>}
+                {/* <OverallReview data={this.state.houseReviews}/> */}
+                <Reviews data={this.state.viewableHouseReviews}/>
             </div>
         )
     }
