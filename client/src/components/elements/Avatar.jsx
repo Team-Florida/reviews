@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export default styled.h1`
+export default styled.div`
   background-color: #D8D8D8;
   border-radius: 50%;
   border-width: 2px;
@@ -10,7 +10,15 @@ export default styled.h1`
   display: block;
   height: 48px;
   width: 48px;
-  // float: left;
+  float: left;
+  // border: 1px solid blue;
+  margin-right: 15px;
+
+  &img {
+    width: 200%,
+    height: 100%,
+    border-radius: 50%;
+  }
 
 `;
 
