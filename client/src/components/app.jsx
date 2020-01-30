@@ -15,8 +15,6 @@ const Title = styled.h1`
     padding-bottom: 2px;
 `;
 
-// Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
-
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -26,20 +24,14 @@ class App extends React.Component {
         }
     }
 
-    sortData(data){
-        var sortedReviews = [];
-        for (var i = 0; i < data.length; i++) {
-            console.log(data[i])
-        }
-    }
-
     getData() {
         axios.get('/reviews')
         .then((response) => {
             // handle success
             // console.log(response.data)
             this.setState({
-                houseReviews: this.sortData(response.data),
+                houseReviews: response.data,
+                //displays only the first 7 reviews
                 viewableHouseReviews: [response.data[0], response.data[1], response.data[2], response.data[3], response.data[4], response.data[5], response.data[6]]
             })
 
@@ -62,7 +54,6 @@ class App extends React.Component {
                 </Title>
 
                 {this.state.houseReviews === undefined ? <div /> : <OverallReview data={this.state.houseReviews}/>}
-                {/* <OverallReview data={this.state.houseReviews}/> */}
                 <Reviews data={this.state.viewableHouseReviews}/>
             </div>
         )
