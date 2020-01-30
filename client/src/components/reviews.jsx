@@ -3,6 +3,14 @@ import styled from 'styled-components';
 import Message from './elements/Message.jsx';
 import Date from './elements/Date.jsx';
 import UserName from './elements/UserName.jsx';
+import Avatar from './elements/Avatar.jsx';
+
+// const NameDate = styled.h1`
+//   // float: left;
+//   text-align: left;
+//   margin: 2px 10px;
+//   display: inline;
+// `;
 
 
 
@@ -12,7 +20,9 @@ const Reviews = (props) => (
     {props.data.map((data) => (
       <div className="house-review">
         <div className="user-photo-name-date">
-          <img src={data.messageThread[0].userPicture}/>
+          <Avatar>
+            <img src={data.messageThread[0].userPicture}/>
+          </Avatar>
           <div>
             <UserName>
               <div className="user-name">{data.messageThread[0].userName}</div>

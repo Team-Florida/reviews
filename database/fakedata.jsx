@@ -55,6 +55,4 @@ var fakeData = function () {
 }
 }
 
-// console.log(fakeData)
-
 module.exports = fakeData;
