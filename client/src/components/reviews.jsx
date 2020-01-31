@@ -5,12 +5,23 @@ import Date from './elements/Date.jsx';
 import UserName from './elements/UserName.jsx';
 import Avatar from './elements/Avatar.jsx';
 
-// const NameDate = styled.h1`
-//   // float: left;
-//   text-align: left;
-//   margin: 2px 10px;
-//   display: inline;
-// `;
+const PicNameDate = styled.div`
+  // float: left;
+  width: 400px;
+  height: 60px;
+  text-align: left;
+  margin: 2px 0px;
+  // border: 1px solid #000000;
+`;
+
+const FullReview = styled.div`
+  // width: 400px;
+  // height: 400px;
+  // text-align: left;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: 1px solid red;
+`
 
 
 
@@ -18,25 +29,32 @@ const Reviews = (props) => (
   //entire block displaying a person's Airbnb review
   <div>
     {props.data.map((data) => (
-      <div className="house-review">
-        <div className="user-photo-name-date">
-          <Avatar>
-            <img src={data.messageThread[0].userPicture}/>
-          </Avatar>
-          <div>
-            <UserName>
-              <div className="user-name">{data.messageThread[0].userName}</div>
-            </UserName>
-            <Date>
-              <div className="user-post-month-year">{data.messageThread[0].userPostMonthYear}</div>
-            </Date>
-          </div>
-        </div>
-        {/* <div className="user-message">{data.messageThread[0].userMessage}</div> */}
+
+      <FullReview>
+
+        <PicNameDate>
+
+            <Avatar>
+              <img src={data.messageThread[0].userPicture}/>
+            </Avatar>
+
+            <div>
+              <UserName>
+                <div>{data.messageThread[0].userName}</div>
+              </UserName>
+              <Date>
+                <div>{data.messageThread[0].userPostMonthYear}</div>
+              </Date>
+            </div>
+
+        </PicNameDate>
+
         <Message>
           {data.messageThread[0].userMessage}
         </Message>
-      </div>
+
+      </FullReview>
+
     ))}
   </div>
 )

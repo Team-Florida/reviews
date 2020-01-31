@@ -2,7 +2,8 @@ import React from 'react';
 import Reviews from './reviews.jsx';
 import axios from 'axios';
 import styled from 'styled-components';
-import OverallReview from './OverallReview.jsx'
+import OverallReview from './OverallReview.jsx';
+import DataBox from './DataBox.jsx';
 
 const Title = styled.h1`
     margin: 0px;
@@ -13,6 +14,13 @@ const Title = styled.h1`
     color: #484848;
     padding-top: 2px;
     padding-bottom: 2px;
+`;
+
+const CompHolder = styled.div`
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 `;
 
 class App extends React.Component {
@@ -28,7 +36,7 @@ class App extends React.Component {
         axios.get('/reviews')
         .then((response) => {
             // handle success
-            // console.log(response.data)
+            console.log(response.data)
             this.setState({
                 houseReviews: response.data,
                 //displays only the first 7 reviews
@@ -48,14 +56,16 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <CompHolder>
                 <Title>
                     Reviews
                 </Title>
-
-                {this.state.houseReviews === undefined ? <div /> : <OverallReview data={this.state.houseReviews}/>}
+                <div>
+                    {this.state.houseReviews === undefined ? <div /> : <OverallReview data={this.state.houseReviews}/>}
+                </div>
+                <DataBox />
                 <Reviews data={this.state.viewableHouseReviews}/>
-            </div>
+            </CompHolder>
         )
     }
 }
