@@ -30,7 +30,7 @@
     "@babel/preset-react": "^7.8.3",
     "babel-core": "^6.23.1",
     "babel-jest": "^25.1.0",
-    "babel-loader": "^6.3.2",
+    "babel-loader": "^9.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-preset-es2015": "^6.22.0",
@@ -40,6 +40,6 @@
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^25.1.0",
     "react-test-renderer": "^15.6.2",
-    "webpack": "^2.2.1"
+    "webpack": "^5.74.0"
   }
 }
